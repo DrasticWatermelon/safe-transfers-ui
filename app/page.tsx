@@ -103,7 +103,7 @@ export default function Home() {
             <p>
               Open source project •{' '}
               <a
-                href="https://github.com"
+                href="https://github.com/DrasticWatermelon/safe-transfers-ui"
                 className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
                 target="_blank"
                 rel="noopener noreferrer"
