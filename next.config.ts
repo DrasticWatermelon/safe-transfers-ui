@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // Uncomment and set to your repo name if deploying to username.github.io/repo-name
   // basePath: '/safe-transfers-ui',
   // assetPrefix: '/safe-transfers-ui/',
+
+  // External packages that shouldn't be bundled
+  serverExternalPackages: ['pino', 'pino-pretty', 'thread-stream'],
 };
 
 export default nextConfig;
