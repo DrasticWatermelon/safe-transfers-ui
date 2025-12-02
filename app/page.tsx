@@ -71,31 +71,81 @@ export default function Home() {
           {activeTab === 'sender' ? <SenderView /> : <ReceiverView />}
 
           <div className="mt-8 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Why is this safer?</h3>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-              <div className="flex gap-3">
-                <span className="text-blue-600 font-bold">1.</span>
-                <p>
-                  <strong>Traditional transfer:</strong> If you send tokens to the wrong address by mistake,
-                  they&apos;re gone forever. No way to recover them ☠️
-                </p>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-blue-600 font-bold">2.</span>
-                <p>
-                  <strong>Allowance-based transfer:</strong> You grant permission for the receiver
-                  to pull funds from your wallet. If you enter the wrong address, the pull transaction will fail
-                  and no harm is done 😁
-                </p>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-blue-600 font-bold">3.</span>
-                <p>
-                  <strong>Recovery:</strong> If the receiver can&apos;t pull the funds, you know
-                  you made a mistake. Simply revoke the allowance (by approving 0) and grant it to the
-                  correct address 🩹
-                </p>
-              </div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Comparison: Normal vs Approve-Based Transfers</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b-2 border-gray-300 dark:border-gray-600">
+                    <th className="text-left py-3 px-4 font-bold text-gray-900 dark:text-white w-2/5">Characteristic</th>
+                    <th className="text-center py-3 px-4 font-bold text-gray-900 dark:text-white w-3/10">Normal Transfer</th>
+                    <th className="text-center py-3 px-4 font-bold text-gray-900 dark:text-white w-3/10">Approve-Based Transfer</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-700 dark:text-gray-300">
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <td className="py-4 px-4">
+                      <div className="font-semibold mb-1">Number of transactions required</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">How many blockchain transactions need to be sent for the tokens to move</div>
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      <div className="text-2xl mb-1">1️⃣</div>
+                      <div className="text-xs">Single transaction by sender</div>
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      <div className="text-2xl mb-1">2️⃣</div>
+                      <div className="text-xs">Approve by sender + claim by receiver</div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <td className="py-4 px-4">
+                      <div className="font-semibold mb-1">Result of incorrect receiver address</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">What happens if you accidentally enter the wrong wallet address</div>
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      <div className="text-2xl mb-1">❌</div>
+                      <div className="text-xs">Tokens sent and lost forever</div>
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      <div className="text-2xl mb-1">✅</div>
+                      <div className="text-xs">Claim fails, tokens stay in sender wallet</div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <td className="py-4 px-4">
+                      <div className="font-semibold mb-1">Need for test transactions</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">Whether you need to send a small amount first to verify the address works</div>
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      <div className="text-2xl mb-1">⚠️</div>
+                      <div className="text-xs">Recommended to test with small amount first</div>
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      <div className="text-2xl mb-1">✅</div>
+                      <div className="text-xs">Not needed - receiver verifies by claiming</div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <td className="py-4 px-4">
+                      <div className="font-semibold mb-1">Possibility for remediation</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">Can you fix it if you realize you made a mistake with the address</div>
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      <div className="text-2xl mb-1">❌</div>
+                      <div className="text-xs">No way to recover once sent</div>
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      <div className="text-2xl mb-1">✅</div>
+                      <div className="text-xs">Revoke approval & create new one anytime</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>💡 Key takeaway:</strong> While approve-based transfers require one extra transaction, they eliminate the risk of losing funds to incorrect addresses.
+                The receiver must prove they can access the address by claiming the funds. If they can&apos;t, your tokens stay safe with you.
+              </p>
             </div>
           </div>
 
