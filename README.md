@@ -88,6 +88,14 @@ If the receiver cannot pull the funds, the sender likely entered the wrong addre
 - 🚨 Start with small test amounts
 - 🚨 This method is safer but still requires careful address verification
 
+## Todo List
+
+- [ ] Implement permit signature support (EIP-2612) for tokens that support it
+  - Allows gasless approvals using off-chain signatures
+  - Reduces the approve transaction from 2 transactions to 1
+  - Improves UX by eliminating the approval transaction cost for senders
+  - Requires checking token support for `permit()` function
+
 ## License
 
 MIT
